@@ -1,7 +1,19 @@
 /* CSS declarations go here */
-@import "lib/bootstrap/variables.import.less";
 
-.navbar-nav > li > .login-buttons-dropdown-align-right {
-	padding: 15px;
+@import "lib/bootstrap/bootstrap.import.less";
+
+.navbar-nav {
+	.navbar-nav;
+
+	> li > .login-buttons-dropdown-align-right {
+		padding-top: @navbar-padding-vertical;
+		padding-bottom: @navbar-padding-vertical;
+		padding-left: @navbar-padding-horizontal;
+		padding-right: @navbar-padding-horizontal;
+	}
+
+	#login-buttons {
+		line-height: @line-height-computed;
+	}
 }
 
