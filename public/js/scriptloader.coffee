@@ -3,7 +3,7 @@ class Scriptloader
 	constructor: (interpreter, scripts, onready) ->
 		$.ajax {
 			url: "/js/#{interpreter}",
-			dataType: 'text',
+			dataType: 'text', # setting it to 'script' would automatically invoke it
 			success: (data) ->
 				@interpreter = eval data
 				if onready
