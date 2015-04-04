@@ -1,5 +1,4 @@
 
-console.log 'interpreter run!'
-
-123
+return () ->
+	console.log 'wurst interpreter'
 
