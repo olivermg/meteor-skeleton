@@ -1,32 +1,42 @@
 
 class Scriptloader
 	constructor: (interpreter, scripts, onready) ->
-		@scripts = scripts
+		@init interpreter, scripts, onready
+
+	init: (interpreter, scripts, onready) =>
+		promises = [
+			Q.fcall () =>
+				# load interpreter:
+				@load interpreter
+		]
+		Array.prototype.push.apply(
+			promises,
+			scripts.map (s) =>
+				# load script:
+				@load s
+		)
+		console.log promises
+		allpromise = Q.all promises
+		console.log allpromise
+		allpromise.then onready
+
+	load: (path) =>
+		d = Q.defer()
 		$.ajax {
-			url: "/js/#{interpreter}",
+			url: "/js/#{path}",
 			dataType: 'text', # setting it to 'script' would automatically invoke it
-			success: (data) => # '=>' binds 'this' inside function to instance of Scriptloader
-				@interpreter = eval data
-				if onready
-					onready.call this # call of instance var binds 'this' to instance of Scriptloader
+			success: (data) =>
+				d.resolve data
 			error: (xhr, stuff, error) ->
-				console.log "ERROR loading interpreter: #{error}"
+				console.log "ERROR loading script: #{error}"
+				d.reject error
 		}
+		d.promise
 
 	run: () =>
 		@interpreter @scripts
 
-scripts = [
-	[
-		"1:aaa",
-		"1:bbb"
-	],
-	[
-		"2:aaa",
-		"2:bbb",
-		"3:ccc"
-	]
-]
+scripts = [ 'script-a.js', 'script-b.js' ]
 
 @scriptloader = new Scriptloader 'interpreter.js', scripts, () ->
 	console.log 'before'
