@@ -1,4 +1,3 @@
 
-return () ->
-	console.log 'inside script-a'
+console.log 'inside script-a'
 
