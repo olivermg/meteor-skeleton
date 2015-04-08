@@ -15,15 +15,21 @@ class Scriptloader
 				# load script:
 				@load s
 		)
-		console.log promises
 		allpromise = Q.all promises
-		console.log allpromise
-		allpromise.then onready
+		allpromise.then (res) =>
+					evalres = res.map eval
+					@interpreter = evalres[0]
+					@scripts = evalres.slice 1
+					onready.call this,
+				(err) =>
+					console.log 'reject:'
+					console.log err
 
 	load: (path) =>
 		d = Q.defer()
 		$.ajax {
 			url: "/js/#{path}",
+			accept: 'application/javascript',
 			dataType: 'text', # setting it to 'script' would automatically invoke it
 			success: (data) =>
 				d.resolve data
@@ -34,6 +40,7 @@ class Scriptloader
 		d.promise
 
 	run: () =>
+		console.log @scripts
 		@interpreter @scripts
 
 scripts = [ 'script-a.js', 'script-b.js' ]
