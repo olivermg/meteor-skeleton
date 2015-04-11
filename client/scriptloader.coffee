@@ -43,8 +43,9 @@ class Scriptloader
 
 scripts = [ 'script-a.js', 'script-b.js' ]
 
-@scriptloader = new Scriptloader 'interpreter.js', scripts, () ->
-	console.log 'before'
-	@run()
-	console.log 'after'
+$(document).ready () ->
+	@scriptloader = new Scriptloader 'interpreter.js', scripts, () ->
+		console.log 'before'
+		@run()
+		console.log 'after'
 
