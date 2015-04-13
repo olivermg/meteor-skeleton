@@ -7,7 +7,7 @@ installClickHandler = () ->
 		console.log 'clicked: ', e
 
 installToolbar = () ->
-	$('body').prepend '<div>TOOLBAR</div>'
+	$('body').prepend '<div class="recorder-toolbar">TOOLBAR</div>'
 
 $(document).ready () ->
 	MutationObserver = window.MutationObserver || window.WebKitMutationObserver
