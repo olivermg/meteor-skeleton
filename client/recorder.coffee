@@ -45,9 +45,17 @@ class Recorder
 
 installRecorder = () ->
 	@recorder = new Recorder $('html')
-	$('body').prepend '<div class="recorder-toolbar">TOOLBAR</div>'
-	$('.recorder-toolbar').on 'click', (e) =>
-		@recorder.toggle()
+	$.ajax {
+		url: "/html/toolbar.html",
+		accept: 'text/html',
+		dataType: 'text',
+		success: (data) =>
+			$('body').prepend data
+			$('.recorder-toolbar').on 'click', (e) =>
+				@recorder.toggle()
+		error: (xhr, stuff, error) ->
+			console.log "ERROR loading script: #{error}"
+	}
 
 $(document).ready () ->
 	installRecorder()
