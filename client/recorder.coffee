@@ -4,8 +4,6 @@ class Recorder
 		@root = root
 		@started = false
 
-	init: (root) =>
-
 	removeClickHandler: (el) ->
 		console.log 'removing click handler'
 		el.off 'click'
