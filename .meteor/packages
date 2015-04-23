@@ -10,6 +10,6 @@ insecure
 accounts-ui
 accounts-password
 coffeescript
-less
 jquery
 frozeman:q
+semantic:ui
