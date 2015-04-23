@@ -1,6 +1,6 @@
 *.swp
 *~
 
-*.js
-*.css
+public/js/*.js
+public/css/*.css
 
