@@ -1,42 +1,41 @@
-
-<template name="myHeader">
-<div class="ui inverted fixed main menu">
-  <div class="left menu">
-  <a class="active item">
-    <i class="home icon"></i> Home
-  </a>
-  <a class="item">
-    <i class="mail icon"></i> Messages
-  </a>
-  </div>
-  <div class="right menu">
-    <div class="item">
-      <div class="ui transparent icon input">
-        <input type="text" placeholder="Search...">
-        <i class="search link icon"></i>
-      </div>
-    </div>
-  </div>
-</div>
-</template>
-
-<template name="myBody">
-<!--div class="ui page grid"-->
-<div class="ui three buttons">
-  <button class="ui active button">One</button>
-  <button class="ui button">Two</button>
-  <button class="ui button">Three</button>
-</div>
-<!--/div-->
-</template>
-
-<template name="myFooter">
-xxxxxxxxxxxxxxx
-</template>
-
 <body>
 
-{{> gridpage header="myHeader" body="myBody" footer="myFooter" }}
+{{# Layout template="gridpage" }}
+
+	{{# contentFor "header" }}
+		<div class="ui inverted fixed main menu">
+		  <div class="left menu">
+		  <a class="active item">
+		    <i class="home icon"></i> Home
+		  </a>
+		  <a class="item">
+		    <i class="mail icon"></i> Messages
+		  </a>
+		  </div>
+		  <div class="right menu">
+		    <div class="item">
+		      <div class="ui transparent icon input">
+		        <input type="text" placeholder="Search...">
+		        <i class="search link icon"></i>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	{{/ contentFor }}
+
+	<!--div class="ui page grid"-->
+	<div class="ui three buttons">
+	  <button class="ui active button">One</button>
+	  <button class="ui button">Two</button>
+	  <button class="ui button">Three</button>
+	</div>
+	<!--/div-->
+
+	{{# contentFor "footer" }}
+		xxxxxxxxxxxxxxx
+	{{/ contentFor }}
+
+{{/ Layout }}
 
 </body>
 

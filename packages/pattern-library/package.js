@@ -14,7 +14,7 @@ Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
   api.addFiles('pattern-library.js');
 
-  api.use(['templating'], 'client');
+  api.use(['templating', 'iron:layout'], 'client');
   api.addFiles(['pages/gridpage.html'], 'client');
 });
 

@@ -1,9 +1,9 @@
 
 <template name="gridpage">
-	{{> UI.dynamic template=header }}
+	{{> yield "header" }}
 	<div class="ui page grid">
-		{{> UI.dynamic template=body }}
+		{{> yield }}
 	</div>
-	{{> UI.dynamic template=footer }}
+	{{> yield "footer" }}
 </template>
 
