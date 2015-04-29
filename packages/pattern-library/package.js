@@ -15,7 +15,7 @@ Package.onUse(function(api) {
   api.addFiles('pattern-library.js');
 
   api.use(['templating', 'iron:layout'], 'client');
-  api.addFiles(['pages/gridpage.html'], 'client');
+  api.addFiles(['pages/gridpage.html', 'atoms/button.html'], 'client');
 });
 
 Package.onTest(function(api) {
